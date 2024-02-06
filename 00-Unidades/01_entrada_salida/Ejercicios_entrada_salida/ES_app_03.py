@@ -34,7 +34,7 @@ class App(customtkinter.CTk):
 
 
     def btn_mostrar_on_click(self):
-        pass
+        alert("Ejercicio 3", self.txt_nombre.get())
                 
     
 if __name__ == "__main__":
