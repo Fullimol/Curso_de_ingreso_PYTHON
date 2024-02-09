@@ -51,7 +51,7 @@ class App(customtkinter.CTk):
         peso_en_toneladas = float(self.txt_toneladas.get())
         peso_a_kilos = peso_en_toneladas * 1000
         peso_maximo = peso_a_kilos / 3500
-        cantidad_camiones = math.ceil(peso_maximo)
+        cantidad_camiones = math.ceil(peso_maximo) # metodo para redondeo hacia arriba.
         alert(None, f"Se necesitan {cantidad_camiones} camiones para {peso_en_toneladas} toneladas")
 
     def btn_tiempo_llegada_on_click(self):
