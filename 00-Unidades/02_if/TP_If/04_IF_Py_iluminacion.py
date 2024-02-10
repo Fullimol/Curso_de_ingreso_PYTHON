@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: Bruno
+apellido: Freijomil
 ---
 TP: IF_Iluminacion
 ---
@@ -43,9 +43,60 @@ class App(customtkinter.CTk):
 
 
     def btn_calcular_on_click(self):
-        pass
-        
-    
+        cantidad = int(self.combobox_cantidad.get())
+        marca = self.combobox_marca.get()
+        precio_total = cantidad * 800
+
+         # Consigna A.
+        if cantidad >= 6:
+            descuento = precio_total * 0.5
+            precio_final = precio_total - descuento
+
+            if precio_final > 4000:
+                    descuento_adicional = precio_final * 0.05
+                    precio_final_adicional = precio_final - descuento_adicional
+                    alert(None, f"TOTAL ${precio_total} \nEl precio con 50% de descuento (${precio_final}) \n+ 5% de DESCUENTO ADICIONAL es = ${precio_final_adicional}")
+            else:
+                    alert(None, f"TOTAL ${precio_total} \n El precio final con 50% de descuento es ${precio_final}")
+
+
+         # Consigna B.
+        elif cantidad == 5 and marca == "ArgentinaLuz":
+            descuento = precio_total * 0.4
+            precio_final = precio_total - descuento
+            alert(None, f"TOTAL ${precio_total} \n El precio final con 40% de descuento es ${precio_final}")
+        elif cantidad == 5 and marca != "ArgentinaLuz":
+            descuento = precio_total * 0.3
+            precio_final = precio_total - descuento
+            alert(None, f"TOTAL ${precio_total} \n El precio final con 30% de descuento es ${precio_final}")
+        # Consigna C.
+        elif cantidad == 4 and (marca == "ArgentinaLuz" or marca == "FelipeLamparas"):
+            descuento = precio_total * 0.25
+            precio_final = precio_total - descuento
+            alert(None, f"TOTAL ${precio_total} \n El precio final con 25% de descuento es ${precio_final}")
+        elif cantidad == 4 and marca not in ["ArgentinaLuz", "FelipeLamparas"]:
+            descuento =precio_total * 0.2
+            precio_final =precio_total - descuento
+            alert(None, f"TOTAL ${precio_total} \n El precio final con 20% de descuento es ${precio_final}")
+         # Consigna D.
+        elif cantidad == 3 and marca == "ArgentinaLuz":
+            descuento =precio_total * 0.15
+            precio_final =precio_total - descuento
+            alert(None, f"TOTAL ${precio_total} \n El precio final con 15% de descuento es ${precio_final}")
+        elif cantidad == 3 and marca == "FelipeLamparas":
+            descuento = precio_total * 0.10
+            precio_final =precio_total - descuento
+            alert(None, f"TOTAL ${precio_total} \n El precio final con 10% de descuento es ${precio_final}")
+        elif cantidad == 3 and (marca != "FelipeLamparas" and marca != "ArgentinaLuz"):
+            descuento = precio_total * 0.05
+            precio_final = precio_total - descuento
+            alert(None, f"TOTAL ${precio_total} \n El precio final con 5% de descuento es ${precio_final}")
+         # Consigna E.
+        # if precio_final > 4000:
+        #     descuento_adicional = precio_total * 0.05
+        #     precio_final -= descuento_adicional
+        #     alert(None, f"TOTAL ${precio_total} \n El precio final con descuento adicional es ${precio_final}")
+
 if __name__ == "__main__":
     app = App()
     app.geometry("300x300")
