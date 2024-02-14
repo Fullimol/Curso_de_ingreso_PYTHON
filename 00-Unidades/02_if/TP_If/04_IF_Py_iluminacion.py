@@ -52,6 +52,7 @@ class App(customtkinter.CTk):
             descuento = precio_total * 0.5
             precio_final = precio_total - descuento
 
+            # Consigna E.
             if precio_final > 4000:
                     descuento_adicional = precio_final * 0.05
                     precio_final_adicional = precio_final - descuento_adicional
@@ -91,11 +92,6 @@ class App(customtkinter.CTk):
             descuento = precio_total * 0.05
             precio_final = precio_total - descuento
             alert(None, f"TOTAL ${precio_total} \n El precio final con 5% de descuento es ${precio_final}")
-         # Consigna E.
-        # if precio_final > 4000:
-        #     descuento_adicional = precio_total * 0.05
-        #     precio_final -= descuento_adicional
-        #     alert(None, f"TOTAL ${precio_total} \n El precio final con descuento adicional es ${precio_final}")
 
 if __name__ == "__main__":
     app = App()
