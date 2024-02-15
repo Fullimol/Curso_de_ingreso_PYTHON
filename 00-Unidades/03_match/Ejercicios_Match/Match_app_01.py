@@ -7,8 +7,8 @@ import customtkinter
 
 '''
 
-nombre:
-apellido:
+nombre: Bruno
+apellido: Freijomil
 ---
 Ejercicio: Match_01
 ---
@@ -43,7 +43,19 @@ class App(customtkinter.CTk):
         
     
     def btn_informar_on_click(self):
-        pass
+        mes = self.combobox_mes.get()
+
+        match mes:
+            case 'Enero':
+                mensaje = 'que comiences bien el año!!!'
+            case 'Marzo':
+                 mensaje =  'a clases!!'
+            case 'Julio':
+                 mensaje = message='se vienen las vacaciones!!'
+            case 'Diciembre':
+                mensaje='Felices fiestas!!!'
+
+        alert(None, f'{mes} -- {mensaje}')
     
     
 if __name__ == "__main__":
