@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: Bruno
+apellido: Freijomil
 ---
 TP: While_elecciones_paso
 ---
@@ -35,8 +35,35 @@ class App(customtkinter.CTk):
         self.btn_validar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
 
     def btn_validar_on_click(self):
-        pass
+        candidatos = []
+        
+        while True:
+            nombre = prompt(title="Validar nombre", prompt="Ingrese nombre")
+            if nombre is None:
+                break
+            edad = prompt(title="Validar edad", prompt="Ingrese edad")
+            if edad is None:
+                break
+            votos = prompt(title="Validar votos", prompt="Ingrese votos")
+            if votos is None:
+                break
+            candidatos.append((nombre, int(edad), int(votos)))
 
+            salir = prompt(title="Salir", prompt="¿Desea salir? (Sí/No)")
+            if salir and salir.lower() == "si":
+                break
+
+        mensaje = "Candidatos registrados:\n"
+
+        maximo = max(candidatos, key=lambda x: x[2])
+        minimo = min(candidatos, key=lambda x: x[2])
+
+        promedio_edades = sum(x[1] for x in candidatos) / len(candidatos)
+
+        for candidato in candidatos:
+            mensaje += f"Nombre: {candidato[0]}, Edad: {candidato[1]}, Votos: {candidato[2]}\n"
+
+        alert(title="Candidatos Registrados", message=mensaje + f"\nCandidato con más votos: {maximo[0]} \nCandidato con menos votos: {minimo[0]} ({minimo[1]} años), Votos: {minimo[2]} \nPromedio de edades: {promedio_edades} \nTotal de votos: {sum(x[2] for x in candidatos)}")
 
 if __name__ == "__main__":
     app = App()
