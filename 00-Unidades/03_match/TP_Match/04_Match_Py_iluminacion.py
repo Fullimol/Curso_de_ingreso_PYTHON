@@ -44,17 +44,52 @@ class App(customtkinter.CTk):
 
     def btn_calcular_on_click(self):
         marca = self.combobox_marca.get()
-        cantidad = self.combobox_cantidad.get()
+        cantidad = int(self.combobox_cantidad.get())
         precio_total = cantidad * 800
 
-        match (marca, cantidad):
-            case ("ArgentinaLuz", "6" | "7" | "8" | "9" | "10" | "11" | "12"):
-                descuento = precio_total * 0.5
-                precio_final = precio_total - descuento
-                alert(None, f"TOTAL ${precio_total} \n El precio final con 50% de descuento es ${precio_final}")
-            case ("ArgentinaLuz", "5"):
-                descuento =precio_total * 0.4
-                precio_final =precio_total - descuento
+        match marca, cantidad:
+            case "ArgentinaLuz", 3:
+                precio_con_descuento = precio_total * 0.15
+                mensaje = f"TOTAL ${precio_total} \n El precio final con 15% de descuento es ${precio_con_descuento}"
+
+            case "FelipeLamparas", 3:
+                precio_con_descuento = precio_total * 0.10
+                mensaje = f"TOTAL ${precio_total} \n El precio final con 10% de descuento es ${precio_con_descuento}"
+
+            case "JeLuz" | "HazIluminacion" | "Osram", 3:
+                precio_con_descuento = precio_total * 0.05
+                mensaje = f"TOTAL ${precio_total} \n El precio final con 5% de descuento es ${precio_con_descuento}"
+
+            case "ArgentinaLuz" | 'FelipeLamparas', 4:
+                precio_con_descuento = precio_total * 0.25
+                mensaje = f"TOTAL ${precio_total} \n El precio final con 25% de descuento es ${precio_con_descuento}"
+
+            case "JeLuz" | "HazIluminacion" | "Osram", 4:
+                precio_con_descuento = precio_total * 0.20
+                mensaje = f"TOTAL ${precio_total} \n El precio final con 20% de descuento es ${precio_con_descuento}"
+
+            case "ArgentinaLuz" , 5 :
+                precio_con_descuento = precio_total * 0.4
+                mensaje = f"TOTAL ${precio_total} \n El precio final con 40% de descuento es ${precio_con_descuento}"
+
+            case "FelipeLamparas" | "JeLuz" | "HazIluminacion" | "Osram", 5:
+                precio_con_descuento = precio_total * 0.3
+                mensaje = f"TOTAL ${precio_total} \n El precio final con 30% de descuento es ${precio_con_descuento}"
+
+            case "ArgentinaLuz" | "FelipeLamparas" | "JeLuz" | "HazIluminacion" | "Osram", 1 | 2 | 3 | 4 | 5:
+                mensaje = f"TOTAL ${precio_total} \n El precio final es ${precio_total}"
+
+            case "ArgentinaLuz" | "JeLuz" | "HazIluminacion" | "Osram", 6 | 7 | 8 | 9 | 10 | 11 | 12:
+                precio_con_descuento = precio_total * 0.5
+
+                if precio_con_descuento > 4000:
+                    descuento_adicional = precio_con_descuento * 0.05
+                    precio_final_adicional = precio_con_descuento - descuento_adicional
+                    mensaje = f"TOTAL ${precio_total} \n El precio con 50% de descuento (${precio_con_descuento}) \n+ 5% de DESCUENTO ADICIONAL es = ${precio_final_adicional}"
+                else:
+                    mensaje = f"TOTAL ${precio_total} \n El precio final con 50% de descuento es ${precio_con_descuento}"
+
+        alert(None, mensaje)
         
     
 if __name__ == "__main__":
