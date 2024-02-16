@@ -29,11 +29,12 @@ class App(customtkinter.CTk):
         
     
     def btn_mostrar_iteracion_on_click(self):
-        contador = 2
+        contador = 0
 
         while contador < 11:
-            alert(title="Iteración", message = contador)
-            contador += 2
+            if contador % 2 == 0:
+                alert(title="Iteración", message = contador)
+            contador += 1
     
     
 if __name__ == "__main__":

@@ -36,7 +36,19 @@ class App(customtkinter.CTk):
 
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
+        array_de_numeros = []
+
+        while True:
+                numero = prompt(title="Validar numero", prompt="Ingrese un numero")
+                if numero is None: 
+                    break
+                array_de_numeros.append(int(numero))
+        
+        suma_total = sum(array_de_numeros)
+        promedio = suma_total / len(array_de_numeros)
+
+        self.txt_suma_acumulada.insert(0, str(suma_total))
+        self.txt_promedio.insert(0, str(promedio))
 
     
 if __name__ == "__main__":

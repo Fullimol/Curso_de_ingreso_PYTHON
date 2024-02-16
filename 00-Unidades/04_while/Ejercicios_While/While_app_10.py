@@ -5,8 +5,8 @@ from tkinter.simpledialog import askstring as prompt
 import customtkinter
 
 '''
-nombre:
-apellido:
+nombre: Bruno
+apellido: Freijomil
 ---
 Ejercicio: while_10
 ---
@@ -37,7 +37,47 @@ class App(customtkinter.CTk):
 
 
     def btn_comenzar_ingreso_on_click(self):
-        pass
+        array_de_numeros = []
+
+        while True:
+                numero = prompt(title="Validar numero", prompt="Ingrese un numero")
+
+                if numero is None or int(numero) == 0:
+                    break
+                array_de_numeros.append(int(numero))
+        
+        suma_positivos = 0
+        suma_negativos = 0
+
+        for num in array_de_numeros:
+            if num > 0:
+                suma_positivos += num
+            elif num < 0:
+                suma_negativos += num
+
+
+        cantidad_positivos = 0
+        cantidad_negativos = 0
+
+        for num in array_de_numeros:
+            if num > 0:
+                cantidad_positivos += 1
+            elif num < 0:
+                cantidad_negativos += 1
+
+        cantidad_negativos = len(array_de_numeros) - cantidad_positivos
+        cantidad_positivos = len(array_de_numeros) - cantidad_negativos
+        diferencia_cantidad = cantidad_positivos - cantidad_negativos
+
+        # Cuenta los números con algún digito 0
+        cantidad_numeros_con_cero = 0
+        for num in array_de_numeros:
+            if "0" in str(num):
+                cantidad_numeros_con_cero += 1
+
+        mensaje = f"La suma acumulada de los positivos es: {suma_positivos}\nLa suma acumulada de los negativos es: {suma_negativos}\nLa cantidad de positivos es: {cantidad_positivos}\nLa cantidad de negativos es: {cantidad_negativos} \n La cantidad de ceros es: {cantidad_numeros_con_cero} \nLa diferencia entre la cantidad de positivos y negativos es: {diferencia_cantidad}"
+
+        alert(None, mensaje)
 
     
 if __name__ == "__main__":
