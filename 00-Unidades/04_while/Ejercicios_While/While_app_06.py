@@ -36,7 +36,6 @@ class App(customtkinter.CTk):
 
     def btn_comenzar_ingreso_on_click(self):
         array_de_numeros = []
-        suma_total = self.txt_suma_acumulada
         
         while array_de_numeros.__len__() < 5:
             numero = int(prompt(title="Validar numero", prompt="Ingrese un numero"))
