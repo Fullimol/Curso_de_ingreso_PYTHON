@@ -64,7 +64,7 @@ class App(customtkinter.CTk):
             if len(apellido) == 0:
                 alert(title="Error", message="Debe completar el campo Apellido")
                 break
-            if not edad.isdigit():
+            if not edad.isdigit(): #comprueba si todos los caracteres son dígitos.
                 alert(title="Error", message="Por favor, ingrese una edad")
                 break
             edad = int(edad)
