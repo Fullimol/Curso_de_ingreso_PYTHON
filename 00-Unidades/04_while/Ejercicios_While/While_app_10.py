@@ -59,6 +59,7 @@ class App(customtkinter.CTk):
                 cantidad_ceros  += 1
 
         diferencia = cantidad_negativos - cantidad_positivos
+        
         if diferencia < 0:
             diferencia *= -1 #esto es, por si la diferencia es negativa, la muestre positiva.
 
