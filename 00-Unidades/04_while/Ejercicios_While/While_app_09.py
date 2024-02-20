@@ -40,20 +40,41 @@ class App(customtkinter.CTk):
                               columnspan=2, sticky="nsew")
 
     def btn_comenzar_ingreso_on_click(self):
-        array_de_numeros = []
+        bandera = True
 
         while True:
-                numero = prompt(title="Validar numero", prompt="Ingrese un numero")
+            numero_ingresado = prompt("EJERCICIO 9", "Ingrese un numero")
+            if numero_ingresado == None:
+                break
+            numero_ingresado = int(numero_ingresado)
 
-                if numero is None or int(numero) == 0:
-                    break
-                array_de_numeros.append(int(numero))
+            if bandera or numero_ingresado < numero_minimo:
+                numero_minimo = numero_ingresado
+
+            if bandera or numero_ingresado > numero_maximo:
+                numero_maximo = numero_ingresado
+                bandera = False
+
+        print(f"Numero maximo {numero_maximo} Numero minimo: {numero_minimo}")
+
+
+# LA FORMA EN LA QUE YO LO HICE:
+    # def btn_comenzar_ingreso_on_click(self):
+    #     array_de_numeros = []
+
+    #     while True:
+    #             numero = prompt(title="Validar numero", prompt="Ingrese un numero")
+
+    #             if numero == None :
+    #                 break
+
+    #             array_de_numeros.append(int(numero))
         
-        maximo = max(array_de_numeros)
-        minimo = min(array_de_numeros)
+    #     maximo = max(array_de_numeros)
+    #     minimo = min(array_de_numeros)
 
-        self.txt_maximo.insert(0, str(maximo))
-        self.txt_minimo.insert(0, str(minimo))
+    #     self.txt_maximo.insert(0, int(maximo))
+    #     self.txt_minimo.insert(0, int(minimo))
 
 
 if __name__ == "__main__":
