@@ -39,6 +39,7 @@ class App(customtkinter.CTk):
         self.btn_mostrar.grid(row=2, padx=20, pady=20,
                               columnspan=2, sticky="nsew")
 
+# Este ejercicio fue resuelto por los profesores:
     def btn_comenzar_ingreso_on_click(self):
         bandera = True
 
