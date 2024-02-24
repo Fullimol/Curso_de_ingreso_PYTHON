@@ -41,9 +41,8 @@ class App(customtkinter.CTk):
 
         self.label2 = customtkinter.CTkLabel(master=self, text="Estado")
         self.label2.grid(row=2, column=0, padx=20, pady=10)
-        self.combobox_tipo = customtkinter.CTkComboBox(
-            master=self, values=["Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a"])
-        self.combobox_tipo.grid(row=2, column=1, padx=20, pady=10)
+        self.txt_estado = customtkinter.CTkEntry(master=self)
+        self.txt_estado.grid(row=2, column=1, padx=20, pady=10)
 
         self.label3 = customtkinter.CTkLabel(master=self, text="Legajo")
         self.label3.grid(row=3, column=0, padx=20, pady=10)
@@ -54,32 +53,58 @@ class App(customtkinter.CTk):
             master=self, text="Validar", command=self.btn_validar_on_click)
         self.btn_validar.grid(row=4, pady=20, columnspan=2, sticky="nsew")
 
+
     def btn_validar_on_click(self):
-        while True:
-            apellido = self.txt_apellido.get()
-            edad = self.txt_edad.get()
-            estado = self.combobox_tipo.get()
-            legajo = self.txt_legajo.get()
+        apellido = prompt('Ingreso', 'Ingrese su apellido')
+        while apellido == None or apellido == '' or not apellido.isalpha():
+            apellido = prompt('Ingreso', 'ERROR. Ingrese su apellido')
+
+        edad = prompt('Ingreso', 'Ingrese su edad')
+        while edad == None or edad == '' or not edad.isdigit():
+            edad = prompt('Ingreso', 'ERROR. Ingrese su edad')
+        
+        estado = prompt('Ingreso', 'Ingrese su estado civil')
+        while estado == None or estado == '' or estado not in ["Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a"]:
+            estado = prompt('Ingreso', 'ERROR. Ingrese su estado civil')
+        
+        legajo = prompt('Ingreso', 'Ingrese su legajo')
+        while legajo == None or legajo == '' or not (len(legajo) == 4 and legajo.isdigit() and legajo[0] != '0'):
+            legajo = prompt('Ingreso', 'ERROR. Ingrese su legajo')
+
+        # Tengo que hacer que los valores se muestren en los inputs.
+        # apellido = self.txt_apellido.set()
+        # self.txt_edad.set(edad)
+        # self.txt_estado.set(estado)
+        # self.txt_legajo.set(legajo)
+
+
+# ESTE LO HICE YO:
+    # def btn_validar_on_click(self):
+    #     while True:
+    #         apellido = self.txt_apellido.get()
+    #         edad = self.txt_edad.get()
+    #         estado = self.combobox_tipo.get()
+    #         legajo = self.txt_legajo.get()
             
-            if len(apellido) == 0:
-                alert(title="Error", message="Debe completar el campo Apellido")
-                break
-            if not edad.isdigit(): #comprueba si todos los caracteres son dígitos.
-                alert(title="Error", message="Por favor, ingrese una edad")
-                break
-            edad = int(edad)
-            if edad < 18 or edad > 90:
-                alert(title="Error", message="Edad fuera del rango permitido")
-                break
-            if estado not in ["Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a"]:
-                alert(title="Error", message="Debe completar el campo Estado Civil")
-                break
-            if not (len(legajo) == 4 and legajo.isdigit() and legajo[0] != '0'):
-                alert(title="Error", message="Error en el legajo.")
-                break
+    #         if len(apellido) == 0:
+    #             alert(title="Error", message="Debe completar el campo Apellido")
+    #             break
+    #         if not edad.isdigit(): #comprueba si todos los caracteres son dígitos.
+    #             alert(title="Error", message="Por favor, ingrese una edad")
+    #             break
+    #         edad = int(edad)
+    #         if edad < 18 or edad > 90:
+    #             alert(title="Error", message="Edad fuera del rango permitido")
+    #             break
+    #         if estado not in ["Soltero/a", "Casado/a", "Divorciado/a", "Viudo/a"]:
+    #             alert(title="Error", message="Debe completar el campo Estado Civil")
+    #             break
+    #         if not (len(legajo) == 4 and legajo.isdigit() and legajo[0] != '0'):
+    #             alert(title="Error", message="Error en el legajo.")
+    #             break
             
-            alert(title="Correcto", message="Carga correcta")
-            break
+    #         alert(title="Correcto", message="Carga correcta")
+    #         break
 
 if __name__ == "__main__":
     app = App()

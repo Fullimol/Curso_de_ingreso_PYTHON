@@ -21,6 +21,9 @@ Luego calcular:
     E. Cantidad de ceros
     F. Diferencia entre la cantidad de los números positivos ingresados y los negativos
 
+    G. El máximo valor. 
+    H. El mínimo valor (incluyendo en que iteracion se encontro, solo la primera)
+
 Informar los resultados mediante alert()
 
 '''
@@ -42,6 +45,8 @@ class App(customtkinter.CTk):
         cantidad_negativos = 0
         cantidad_ceros = 0
 
+        contador_iteracion = 0
+
         while True:
             numero = prompt("UTN", "Ingrese un numero: ")
             if numero == None:
@@ -58,19 +63,32 @@ class App(customtkinter.CTk):
             else:
                 cantidad_ceros  += 1
 
+
+            if  contador_iteracion == 0 or numero > numero_maximo:
+                numero_maximo = numero
+            if  contador_iteracion == 0 or numero < numero_minimo:
+                numero_minimo = numero
+                iteracion_minimo = contador_iteracion + 1
+            contador_iteracion += 1
+
         diferencia = cantidad_negativos - cantidad_positivos
-        
         if diferencia < 0:
             diferencia *= -1 #esto es, por si la diferencia es negativa, la muestre positiva.
 
-        resultado = (f"La suma acumulada de los negativos es: {suma_negativos} \nLa suma acumulada de los positivos es: {suma_positivos} "
-        f"\nLa cantidad de numeros positivos ingresados es: {cantidad_positivos} "
-        f"\nLa cantidad de numeros negativos ingresados es: {cantidad_negativos} "
-        f"\nLa cantidad de ceros ingresados es: {cantidad_ceros} "
-        f"\nLa diferencia entre la cantidad de numeros positivos ingresados y los negativos es: {diferencia}")
+        if contador_iteracion == 0:
+            resultado = "No se ingresaron datos"
+        else:
+            resultado = (
+            f"La suma acumulada de los negativos es: {suma_negativos} \nLa suma acumulada de los positivos es: {suma_positivos}"
+            f"\nLa cantidad de numeros positivos ingresados es: {cantidad_positivos}"
+            f"\nLa cantidad de numeros negativos ingresados es: {cantidad_negativos}"
+            f"\nLa cantidad de ceros ingresados es: {cantidad_ceros}"
+            f"\nLa diferencia entre la cantidad de numeros positivos ingresados y los negativos es: {diferencia}"
+            f"\nEl numero maximo ingresado fue: {numero_maximo}"
+            f"\nEl numero mínimo ingresado fue: {numero_minimo} encontrado en la iteracion {iteracion_minimo}"
+            )
 
         alert("UTN", resultado)
-
 
 
     #ESTO HABÍA HECHO YO...
