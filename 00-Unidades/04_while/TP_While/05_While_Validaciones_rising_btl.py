@@ -71,11 +71,11 @@ class App(customtkinter.CTk):
         while legajo == None or legajo == '' or not (len(legajo) == 4 and legajo.isdigit() and legajo[0] != '0'):
             legajo = prompt('Ingreso', 'ERROR. Ingrese su legajo')
 
-        # Tengo que hacer que los valores se muestren en los inputs.
-        # apellido = self.txt_apellido.set()
-        # self.txt_edad.set(edad)
-        # self.txt_estado.set(estado)
-        # self.txt_legajo.set(legajo)
+
+        self.txt_apellido.insert(0, apellido)
+        self.txt_edad.insert(0, edad)
+        self.txt_estado.insert(0,estado)
+        self.txt_legajo.insert(0, legajo)
 
 
 # ESTE LO HICE YO:
