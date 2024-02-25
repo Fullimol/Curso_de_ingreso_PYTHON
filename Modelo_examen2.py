@@ -83,6 +83,8 @@ class App(customtkinter.CTk):
 
         monto_total_platea_debito_multiplo6 = 0
 
+        contador_entradas_platea_primo = 0
+
         while seguir:
             contador_personas_totales += 1
             
@@ -120,6 +122,11 @@ class App(customtkinter.CTk):
                     precio_entrada = 30000
                     if medio_de_pago == "Debito":
                         contador_entradas_platea += 1
+#  6) - La cantidad de personas que compraron entradas de tipo "Platea" y cuya edad es un número primo.
+                    for i in range(1, edad + 1):
+                        if edad % i == 0:
+                            contador_entradas_platea_primo += 1
+
 
 #             Las entradas adquiridas con tarjeta de crédito tendrán un 20% de descuento sobre el 
 #             precio de la entrada, mientras que las adquiridas con tarjeta de débito un 15%. 
@@ -177,12 +184,15 @@ class App(customtkinter.CTk):
             print(f"5. No hay personas con entradas de tipo General con Debito")
 
         # 6)
+        if contador_entradas_platea_primo == 2:
+            print(f"6. Cantidad de personas que compraron entradas Platea y cuya edad es un número primo: {contador_entradas_platea_primo}")
+
         
         # 7)
-            if monto_total_platea_debito_multiplo6 > 0:
+        if monto_total_platea_debito_multiplo6 > 0:
                 print(f"7. Monto total recaudado de Platea con Debito por personas cuyas edades son multiplos de 6: ${monto_total_platea_debito_multiplo6}")
-            else:
-                print(f"7. Monto total recaudado de Platea con Debito por personas cuyas edades son multiplos de 6: No hay personas cuyas edades son multiplos de 6")
+        else:
+                print(f"7. Monto total recaudado de Platea con Debito por personas cuyas edades son multiplos de 6: (no hubo casos)")
 
 
 if __name__ == "__main__":

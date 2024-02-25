@@ -104,7 +104,6 @@ class App(customtkinter.CTk):
             elif sexo == "nb":
                 cantidad_nb += 1
 
-        # Punto B - El porcentaje de personas con fiebre y el porcentaje sin fiebre
         if cantidad_con_fiebre > 0:
             porcentaje_con_fiebre = (cantidad_con_fiebre / cantidad_personas) * 100
         else:
