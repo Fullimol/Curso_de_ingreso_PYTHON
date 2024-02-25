@@ -30,10 +30,10 @@ class App(customtkinter.CTk):
         cantidad_primos= 0
 
         for i in range(2, numero + 1):
-            es_primo = True
+            es_primo = False
             for j in range(2, i):
                 if i % j == 0:
-                    es_primo = False
+                    es_primo = True
             if es_primo:
                 cantidad_primos += 1
                 print(f"\t{i}")
