@@ -28,7 +28,7 @@ Nos encargan el desarrollo de una aplicación que le permita a sus usuarios oper
         #! 4) X Nombre y cantidad invertida del primer usuario que compró BONOS o CEDEAR
         #! 5) X Nombre y posicion del usuario que invirtio menos dinero
         #! 6) X Promedio de dinero en CEDEAR ingresado en total.  
-        #! 7) - Promedio de cantidad de instrumentos MEP vendidos en total
+        #! 7) X Promedio de cantidad de instrumentos MEP vendidos en total
 '''
 
 class App(customtkinter.CTk):
@@ -61,7 +61,7 @@ class App(customtkinter.CTk):
 
         contador_MEP = 0
 
-        for i in range(1, 3+1):
+        for i in range(1, 10+1):
             nombre = input("Ingrese nombre: ")
             monto = int(input("Ingrese monto (mayor a $10.000): "))
             while monto < 10000:
